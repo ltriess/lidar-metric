@@ -1,5 +1,15 @@
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<script type="text/javascript">
+	// Copy text to clipboard
+	function copyToClipboard(element) {
+		var $temp = $("<textarea>");
+		$("body").append($temp);
+		$temp.val($(element).text()).select();
+		document.execCommand("copy");
+		$temp.remove();
+	}
+</script>
 
 <style type="text/css">
 	body {
@@ -69,6 +79,14 @@
     table td, table td * {
         vertical-align: top;
     }
+
+    pre code {
+		background-color: #eee;
+		border: 1px solid #999;
+		display: block;
+		padding: 20px;
+		font-family: monospace;
+	}
 </style>
 
 <html lang="en">
@@ -146,6 +164,15 @@
 				</tr>
 			</table>
 			<br>
+
+			<!-------------------------------- RESOURCES -------------------------------->
+			<table style="width: 960px; text-align: center; margin-left:auto; margin-right:auto">
+				<tr>
+				<td>
+					<span style="font-size:24px">Coming Soon...</span>
+				</td>
+				</tr>
+			</table>
         </div>
 
         <br>
@@ -161,8 +188,110 @@
             </tr>
         </table>
 
-        <br>
-        <div style="text-align: center;"><h1>Coming Soon...</h1></div>
+        <table style="width: 960px; text-align: center; margin-left:auto; margin-right:auto">
+			<tr>
+				<center>
+					<td style="font-size:14px">
+						<i>
+							<b>Proposed Approach</b>:<br>
+							The realism measure has a tripartite understanding of the 3D-world, schematically illustrated on the bottom left.
+							The other images show the color-coded metric scores at discrete query point locations (gray circles).
+							Local regions in the simulated sample (top left) are largely predicted as being of synthetic origin (blue), while regions in the real-world sample (top right) are predicted as being realistic (green).
+							The bottom right image shows a GAN-generated sample which has large areas with high distortion levels that neither appear realistic nor synthetic.
+							The metric therefore assigns high misc scores (red).
+						</i>
+					</td>
+				</center>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+		<hr><!-------------------------------- ABSTRACT -------------------------------->
+
+		<div id="abstract" style="text-align: center;"><h1>Abstract</h1></div>
+
+		<table style="width: 960px; text-align: left; margin-left:auto; margin-right:auto">
+			<tr>
+			<td>
+				Judging the quality of samples synthesized by generative models can be tedious and time consuming, especially for complex data structures, such as point clouds.
+				This paper presents a novel approach to quantify the realism of local regions in LiDAR point clouds.
+				Relevant features are learned from real-world and synthetic point clouds by training on a proxy classification task.
+				Inspired by fair networks, we use an adversarial technique to discourage the encoding of dataset-specific information.
+				The resulting metric can assign a quality score to samples without requiring any task specific annotations.
+				<br><br>
+				In a series of experiments, we confirm the soundness of our metric by applying it in controllable task setups and on unseen data.
+				Additional experiments show reliable interpolation capabilities of the metric between data with varying degree of realism.
+				As one important application, we demonstrate how the local realism score can be used for anomaly detection in point clouds.
+			</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+		<hr><!-------------------------------- PAPER -------------------------------->
+		<div id="paper" style="text-align: center;"><h1>Paper</h1></div>
+
+		<div style="text-align: center;">
+			<span><a href="https://arxiv.org/abs/2106.02377"><img class="layered-paper-big" style="height:250px" src="./images/paper_thumb.png" alt=""/></a></span>
+			<br><br><br><br>
+			<span style="font-size:20pt">Paper: coming soon</span>
+		</div>
+		<br>
+		<div style="text-align: center;">
+			<span style="font-size:18pt">
+				Citation:
+				<button type="button" onclick="copyToClipboard('#bibtex')">Copy</button>
+				<button type="button" onclick="window.open('./resources/triess2021gcpr.bib')">Download</button>
+			</span>
+<!---------><pre><code id="bibtex" style="width: 960px; text-align: left; margin-left:auto; margin-right:auto">@inproceedings{triess2021gcpr,
+<!--------->  title = {
+<!--------->	Quantifying point cloud realism through adversarially learned latent representations
+<!--------->  },
+<!--------->  author = {
+<!--------->    Larissa T. Triess and David Peter and Stefan A. Baur and J. Marius Z\"ollner
+<!--------->  },
+<!--------->  booktitle = {Proc. of the German Conference on Pattern Recognition (GCPR)},
+<!--------->  year = {2021},
+<!--------->}</code></pre>
+		</div>
+
+		<br>
+		<br>
+		<hr><!-------------------------------- CONTRIBUTIONS -------------------------------->
+
+		<div id="contributions" style="text-align: center;"><h1>Contributions</h1></div>
+
+		<table style="width: 960px; text-align: left; margin-left:auto; margin-right:auto">
+			<tr>
+			<td>
+				The aim of this paper is to provide a reliable metric that gives a quantitative estimate about the realism of generated LiDAR data.
+				The contributions of this work are threefold.
+				First and foremost, we present a novel way to learn a measure of realism in point clouds.
+				This is achieved by learning hierarchical point set features on a proxy classification task.
+				Second, we utilize an adversarial technique from the fairness-in-machine-learning domain in order to eliminate dataset-specific information.
+				This allows the measure to be used on unseen datasets.
+				Finally, we demonstrate how the fine-grained local realism score can be used for anomaly detection in LiDAR scans.
+			</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+		<hr><!-------------------------------- ACKNOWLEDGEMENTS -------------------------------->
+
+		<div id="acknowledgements" style="text-align: center;"><h1>Acknowledgements</h1></div>
+
+		<table style="width: 960px; text-align: left; margin-left:auto; margin-right:auto">
+			<tr>
+			<td>
+				The research leading to these results is funded by the German Federal Ministry for Economic Affairs and Energy within the project "KI Delta Learning" (Förderkennzeichen 19A19013A).
+			</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
 
 	</body>
 </html>
